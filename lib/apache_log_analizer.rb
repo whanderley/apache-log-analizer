@@ -41,12 +41,13 @@ class ApacheLogAnalizer < Array
   end
 
   def registers_between_dates(*dates)
-    self.find_all {|register| register.date.to_date >= dates.min.to_date and 
+    ApacheLogAnalizer.new self.find_all {|register| register.date.to_date >= dates.min.to_date and 
       register.date.to_date <= dates.max.to_date}
   end  
 
   def registers_between_hours(*hours)
-    self.find_all {|register| register.date.hour >= hours.min and register.date.hour <= hours.max}
+    ApacheLogAnalizer.new self.find_all {|register| register.date.hour >= hours.min and
+     register.date.hour <= hours.max}
   end  
 end
 

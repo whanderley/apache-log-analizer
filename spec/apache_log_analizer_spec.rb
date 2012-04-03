@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApacheLogAnalizer do
-  before(:all) do
+  before(:each) do
     @access = ApacheLogAnalizer.new File.dirname(__FILE__) + "/resources/access.log"    
   end
 
@@ -76,12 +76,16 @@ describe ApacheLogAnalizer do
     Time.stub_chain(:new => Time.new(2012, 'Mar', 22))
     registers_today = @access.registers_today
     registers_today.length.should == 3
+    access_between_hours_today = @access.registers_today.registers_between_hours 11, 12
+    access_between_hours_today.length.should == 3
   end
 
   it 'should get all register of yesterday' do
     Time.stub_chain(:new => Time.new(2012, 'Mar', 23))
     registers_yesterday = @access.registers_yesterday
     registers_yesterday.length.should == 3
+    access_between_hours_yesterday = @access.registers_yesterday.registers_between_hours 11, 12
+    access_between_hours_yesterday.length.should == 3
   end
 end
 
