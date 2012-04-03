@@ -2,6 +2,7 @@ require 'time'
 
 class Register  
   attr_accessor :date
+
   def initialize(register)
     @date = get_date_of register
   end
