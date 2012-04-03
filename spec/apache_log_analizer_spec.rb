@@ -32,11 +32,21 @@ describe ApacheLogAnalizer do
 
   it 'should get all registers between two dates' do
     first_date = Time.new 2012, "Mar", 21
-    second_date = Time.new 2012, "Mar", 28
-    access_between_dates = @access.registers_between_dates [first_date, second_date]
-    access_between_dates.length.should == 8
+    second_date = Time.new 2012, "Mar", 25
+    access_between_dates = @access.registers_between_dates first_date, second_date
+    access_between_dates.length.should == 3
+    first_date = Time.new 2012, "Mar", 15
+    second_date = Time.new 2012, "Mar", 20
+    access_between_dates = @access.registers_between_dates first_date, second_date
+    access_between_dates.length.should == 0
   end
 
-  
-  
+  it 'should get all registers between two hours' do
+    access_between_hours = @access.registers_between_hours 11, 12
+    access_between_hours.length.should == 3
+    access_between_hours = @access.registers_between_hours 1, 5
+    access_between_hours.length.should == 0
+  end
+
 end
+
