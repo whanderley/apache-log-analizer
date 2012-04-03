@@ -87,5 +87,9 @@ describe ApacheLogAnalizer do
     access_between_hours_yesterday = @access.registers_yesterday.registers_between_hours 11, 12
     access_between_hours_yesterday.length.should == 3
   end
+
+  it 'should get all register of a particular user agent' do
+    @access.registers_of_agent_user('mozilla').length.should == 3
+  end
 end
 

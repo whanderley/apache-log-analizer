@@ -48,6 +48,10 @@ class ApacheLogAnalizer < Array
   def registers_between_hours(*hours)
     ApacheLogAnalizer.new self.find_all {|register| register.date.hour >= hours.min and
      register.date.hour <= hours.max}
-  end  
+  end 
+
+  def registers_of_agent_user(agent)
+    ApacheLogAnalizer.new self.find_all {|register| register.user_agent.upcase.include? agent.upcase}
+  end 
 end
 
