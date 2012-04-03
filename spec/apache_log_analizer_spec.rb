@@ -49,9 +49,18 @@ describe ApacheLogAnalizer do
   end
 
   it 'should get all register between two hours in particular date' do
-    access_between_hours_on_day_26 = @access.registers_of_day(
+    access_between_hours_on_day_22 = @access.registers_of_day(
       Time.new 2012, 'Mar', 22).registers_between_hours 11, 12
-    access_between_hours_on_day_26.length.should == 3
+    access_between_hours_on_day_22.length.should == 3
+  end
+
+  it 'should get all register between two hours in before date' do
+    access_between_hours_before_day_23 = @access.registers_before_of_date(
+      Time.new 2012, 'Mar', 23).registers_between_hours 11, 12
+    access_between_hours_before_day_23.length.should == 3
+        access_between_hours_before_day_20 = @access.registers_before_of_date(
+      Time.new 2012, 'Mar', 20).registers_between_hours 11, 12
+    access_between_hours_before_day_20.length.should == 0
   end
 end
 
