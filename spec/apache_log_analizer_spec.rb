@@ -77,5 +77,11 @@ describe ApacheLogAnalizer do
     registers_today = @access.registers_today
     registers_today.length.should == 3
   end
+
+  it 'should get all register of yesterday' do
+    Time.stub_chain(:new => Time.new(2012, 'Mar', 23))
+    registers_yesterday = @access.registers_yesterday
+    registers_yesterday.length.should == 3
+  end
 end
 
