@@ -71,5 +71,11 @@ describe ApacheLogAnalizer do
       Time.new 2012, 'Mar', 29).registers_between_hours 11, 12
     access_between_hours_before_day_29.length.should == 0
   end
+
+  it 'should get all register of today' do
+    Time.stub_chain(:new => Time.new(2012, 'Mar', 22))
+    registers_today = @access.registers_today
+    registers_today.length.should == 3
+  end
 end
 

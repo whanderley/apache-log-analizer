@@ -18,6 +18,11 @@ class ApacheLogAnalizer < Array
     end
   end
 
+  def registers_today
+    date = Time.new
+    registers_of_day date        
+  end
+
   def registers_of_day(date)
     ApacheLogAnalizer.new self.find_all {|register| register.date.to_date == date.to_date}
   end
