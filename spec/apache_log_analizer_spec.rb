@@ -18,5 +18,10 @@ describe ApacheLogAnalizer do
     access_before_day = @access.registers_before_of_date Time.new 2012, "Mar", 26
     access_before_day.length.should == 3
   end
+
+  it 'should get all registers after of a particular date' do
+    access_before_day = @access.registers_after_of_date Time.new 2012, "Mar", 22
+    access_before_day.length.should == 5
+  end
   
 end

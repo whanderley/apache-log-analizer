@@ -13,23 +13,15 @@ class ApacheLogAnalizer < Array
   end
 
   def registers_of_day(date)
-    register_from_date = []
-    self.each do |register|
-      if register.date.to_date == date.to_date
-        register_from_date.push register   
-      end
-    end
-    register_from_date
+    self.find_all {|register| register.date.to_date == date.to_date}
   end
 
   def registers_before_of_date(date)
-    register_before_date = []
-    self.each do |register|
-      if register.date.to_date < date.to_date
-        register_before_date.push register   
-      end
-    end
-    register_before_date
+    self.find_all {|register| register.date.to_date < date.to_date}
+  end
+
+  def registers_after_of_date(date)
+     self.find_all {|register| register.date.to_date > date.to_date}
   end
 end
 
