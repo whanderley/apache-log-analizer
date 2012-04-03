@@ -10,7 +10,6 @@ class ApacheLogAnalizer < Array
     log.each do |register|
       self.push Register.new register
     end
-#    require 'pry'; binding.pry
   end
 
   def registers_of_day(date)
@@ -21,6 +20,16 @@ class ApacheLogAnalizer < Array
       end
     end
     register_from_date
+  end
+
+  def registers_before_of_date(date)
+    register_before_date = []
+    self.each do |register|
+      if register.date.to_date < date.to_date
+        register_before_date.push register   
+      end
+    end
+    register_before_date
   end
 end
 
