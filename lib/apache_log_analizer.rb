@@ -27,7 +27,7 @@ class ApacheLogAnalizer < Array
   end
 
   def registers_after_of_date(date)
-    self.find_all {|register| register.date.to_date > date.to_date}
+    ApacheLogAnalizer.new self.find_all {|register| register.date.to_date > date.to_date}
   end
 
   def registers_between_dates(*dates)
