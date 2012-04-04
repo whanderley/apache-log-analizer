@@ -17,4 +17,8 @@ describe Register do
   it 'should contain the host' do
     @access[0].host.should == "127.0.0.1"
   end
+
+  it 'should contain the referer' do
+    @access[0].referer.should == "http://www.traceamobile.co.uk/faq.php"
+  end
 end
