@@ -52,6 +52,10 @@ class ApacheLogAnalizer < Array
 
   def registers_of_agent_user(agent)
     ApacheLogAnalizer.new self.find_all {|register| register.user_agent.upcase.include? agent.upcase}
-  end 
+  end
+
+  def registers_of_host(host)
+    ApacheLogAnalizer.new self.find_all {|register| register.host == host}
+  end
 end
 
