@@ -1,11 +1,12 @@
 require 'time'
 
 class Register  
-  attr_accessor :date, :user_agent
+  attr_accessor :date, :user_agent, :host
 
   def initialize(register)
     @date = get_date_of register
     @user_agent = register["%{User-Agent}i"]
+    @host = register["%h"]
   end
 
   def get_date_of(register)
