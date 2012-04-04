@@ -94,6 +94,10 @@ describe ApacheLogAnalizer do
 
   it 'should get all register of a particular host' do
     @access.registers_of_host('127.0.0.1').length.should == 3
+  end
+
+  it 'should get all register of a particular referer' do
+    @access.registers_of_referer('trace').length.should == 3
   end 
 end
 

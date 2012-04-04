@@ -57,5 +57,9 @@ class ApacheLogAnalizer < Array
   def registers_of_host(host)
     ApacheLogAnalizer.new self.find_all {|register| register.host == host}
   end
+
+  def registers_of_referer(referer)
+    ApacheLogAnalizer.new self.find_all {|register| register.referer.upcase.include? referer.upcase}
+  end
 end
 
